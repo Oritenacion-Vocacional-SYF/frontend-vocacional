@@ -22,4 +22,7 @@ export class UsuarioService {
   autenticarUsuario(usuario: Usuario) {
     return this.HttpClient.post(`${this.baseURL}/auth`, usuario);
   }
+  eliminarUsuario(username: String) {
+    return this.HttpClient.delete(`${this.baseURL}/${username}`);
+  }
 }

@@ -174,7 +174,7 @@
                                 <mat-form-field class="example-full-width">
                                     <mat-label>Edad</mat-label>
                                     <input matInput [(ngModel)]="estudiante.edad" type="number" id="edad" name="edad"
-                                        required minlength="1" maxlength="3" #edad="ngModel">
+                                        required minlength="1" maxlength="3" #edad="ngModel" min="12">
                                     <div class="alert alert-danger"
                                         *ngIf="edad.invalid && (edad.dirty || edad.touched)">
                                         <div *ngIf="edad?.errors?.['required']">

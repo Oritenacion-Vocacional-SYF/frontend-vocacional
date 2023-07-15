@@ -3,11 +3,12 @@ import { Usuario } from 'src/app/model/usuario';
 import { EstudianteService } from 'src/app/service/estudiante.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { Estudiante } from 'src/app/model/estudiante';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-estudiantes.agregar',
   templateUrl: './estudiantes.agregar.component.html',
-  styleUrls: ['./estudiantes.agregar.component.css']
+  styleUrls: ['./estudiantes.agregar.component.css'],
 })
 export class EstudiantesAgregarComponent implements OnInit {
   usuario: any;
@@ -17,7 +18,8 @@ export class EstudiantesAgregarComponent implements OnInit {
 
   constructor(
     private estudianteService: EstudianteService,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -26,7 +28,6 @@ export class EstudiantesAgregarComponent implements OnInit {
 
   onSubmit() {
     this.registrarUsuarioEstudiante();
-    this.registrarEstudiante();
   }
 
   registrarEstudiante() {
@@ -64,8 +65,9 @@ export class EstudiantesAgregarComponent implements OnInit {
       .agregarUsuarioEstudiante(usuario_estudiante)
       .subscribe((data) => {
         this.usuario = data;
+        this.registrarEstudiante();
+        this.router.navigate(['admin/usuarios']);
       });
     console.log(this.usuario);
   }
 }
-
