@@ -21,4 +21,8 @@ export class EstudianteService {
   public agregarEstudiante(estudiante: Estudiante) {
     return this.http.post(`${this.baseUrl}/estudiantes`, estudiante);
   }
+
+  public obtenerEstudianteUsername(usuario: any) {
+    return this.http.post(`${this.baseUrl}/estudiantes/username`, usuario);
+  }
 }
