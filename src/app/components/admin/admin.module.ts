@@ -17,6 +17,11 @@ import { EvaListarComponent } from './evaluaciones/eva.listar/eva.listar.compone
 import { EvaListarPreguntasComponent } from './evaluaciones/eva.listar.preguntas/eva.listar.preguntas.component';
 import { PlanesListarComponent } from './planes/planes.listar/planes.listar.component';
 import { PlanesAgregarComponent } from './planes/planes.agregar/planes.agregar.component';
+
+import { EvaModificarComponent } from './evaluaciones/eva.modificar/eva.modificar.component';
+import { EvaAgregarPreguntaComponent } from './evaluaciones/eva.agregar.pregunta/eva.agregar.pregunta.component';
+import { EvaModificarPreguntaComponent } from './evaluaciones/eva.modificar.pregunta/eva.modificar.pregunta.component';
+
 import { PlanesModificarComponent } from './planes/planes.modificar/planes.modificar.component';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
 
@@ -36,7 +41,13 @@ import { NavbarComponent } from '../shared/navbar/navbar.component';
     EvaListarPreguntasComponent,
     PlanesListarComponent,
     PlanesAgregarComponent,
+
+    EvaModificarComponent,
+    EvaAgregarPreguntaComponent,
+    EvaModificarPreguntaComponent
+
     PlanesModificarComponent
+
   ],
   imports: [
     CommonModule,

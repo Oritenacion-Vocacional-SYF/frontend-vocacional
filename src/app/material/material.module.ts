@@ -11,6 +11,8 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
+import {MatSlideToggleModule} from '@angular/material/slide-toggle'
+import {MatSelect, MatSelectModule} from '@angular/material/select'
 
 @NgModule({
   declarations: [],
@@ -27,7 +29,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
     MatInputModule,
     FormsModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSlideToggleModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }

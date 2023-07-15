@@ -16,6 +16,10 @@ export class EvaluacionService {
     return this.http.get(`${this.baseUrl}`)
   }
 
+  registrarEvaluacion(evaluacion: any){
+    return this.http.post(`${this.baseUrl}`, evaluacion)
+  }
+
   obtenerEvaluacion(evaluacionId: any){
     return this.http.get(`${this.baseUrl}/${evaluacionId}`)
   }
@@ -30,5 +34,13 @@ export class EvaluacionService {
 
   obtenerEvaluacionesActivasDeUnaCategoria(categoriaId: any){
     return this.http.get(`${this.baseUrl}/categoria/activo/${categoriaId}`)
+  }
+
+  eliminarEvaluacion(evaluacionId: any){
+    return this.http.delete(`${this.baseUrl}/${evaluacionId}`)
+  }
+
+  modificarEvaluacion(evaluacion: any){
+    return this.http.put(`${this.baseUrl}`, evaluacion)
   }
 }
