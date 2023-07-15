@@ -1,6 +1,7 @@
 import { LocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { EvaluacionService } from 'src/app/service/evaluacion.service';
 import { PreguntaService } from 'src/app/service/pregunta.service';
 import { PruebaTerminadaService } from 'src/app/service/prueba-terminada.service';
 import swal from 'sweetalert2';
@@ -17,7 +18,9 @@ export class StartComponent implements OnInit {
   respuestasCorrectas = 0;
   intentos = 0;
   dni_estudiante = '70649612';
-
+  esPrueba = false;
+  evaluacion_categoria: any;
+  vocacion: any;
   esEnviado = false;
   timer: any;
 
@@ -25,7 +28,8 @@ export class StartComponent implements OnInit {
     private locationSt: LocationStrategy,
     private route: ActivatedRoute,
     private preguntaService: PreguntaService,
-    private pruebaTerminadaService: PruebaTerminadaService
+    private pruebaTerminadaService: PruebaTerminadaService,
+    private evaluacionService: EvaluacionService
   ) {}
 
   ngOnInit(): void {
@@ -38,25 +42,42 @@ export class StartComponent implements OnInit {
   cargarPreguntas() {
     this.preguntaService
       .listarPreguntasDeLaEvaluacionParaRendir(this.evaluacionId)
+      .subscribe(
+        (data: any) => {
+          console.log(data);
+          this.preguntas = data;
+          this.timer = this.preguntas.length * 2 * 60;
+
+          this.preguntas.forEach((p: any) => {
+            p['respuestaEstudiante'] = '';
+          });
+          this.iniciarTemporizador();
+        },
+        (error: any) => {
+          console.log(error);
+          swal(
+            'Error',
+            'Error al cargar las preguntas de la evaluación.',
+            'error'
+          );
+        }
+      );
+
+    this.evaluacionService
+      .obtenerEvaluacion(this.evaluacionId)
       .subscribe((data: any) => {
-        console.log(data);
-        this.preguntas = data;
+        this.evaluacion_categoria = data.categoria.titulo;
+        console.log(this.evaluacion_categoria);
+        if (data.categoria.titulo == 'Prueba') {
+          this.esPrueba = true;
+          console.log(this.evaluacion_categoria);
+          console.log(this.esPrueba);
 
-        this.timer = this.preguntas.length * 2 * 60;
+          console.log(this.esPrueba == true ? 'Si es' : 'No es'); // Mover aquí el console.log
+        }
 
-        this.preguntas.forEach((p: any) => {
-          p['respuestaEstudiante'] = '';
-        });
-        this.iniciarTemporizador();
-      }),
-      (error: any) => {
-        console.log(error);
-        swal(
-          'Error',
-          'Error al cargar las preguntas de la evaluación.',
-          'error'
-        );
-      };
+        console.log(this.esPrueba == true ? 'Si es' : 'No es'); // Mover aquí el console.log
+      });
   }
 
   iniciarTemporizador() {
@@ -92,19 +113,29 @@ export class StartComponent implements OnInit {
   }
 
   evaluarEvaluacion() {
-    this.preguntaService.evaluarPreguntas(this.preguntas).subscribe(
-      (data: any) => {
-        console.log(data);
-        this.puntosConseguidos = data.puntaje_maximo;
-        this.respuestasCorrectas = data.respuestas_correctas;
-        this.intentos = data.intentos;
-        this.esEnviado = true;
-        this.guardarPruebaEstudiante();
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    if (this.evaluacion_categoria == 'Prueba') {
+      this.preguntaService.evaluarPreguntas(this.preguntas).subscribe(
+        (data: any) => {
+          console.log(data);
+          this.puntosConseguidos = data.puntaje_maximo;
+          this.respuestasCorrectas = data.respuestas_correctas;
+          this.intentos = data.intentos;
+          this.esEnviado = true;
+          this.guardarPruebaEstudiante();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    } else {
+      this.preguntaService
+        .evaluarCuestionario(this.preguntas)
+        .subscribe((data: any) => {
+          console.log(data);
+          this.vocacion = data;
+          this.esEnviado = true;
+        });
+    }
   }
 
   guardarPruebaEstudiante() {
