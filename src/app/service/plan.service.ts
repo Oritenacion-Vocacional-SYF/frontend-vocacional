@@ -22,4 +22,12 @@ export class PlanService {
   eliminarPlan(idPlan:number):Observable<Object>{
     return this.httpClient.delete(`${this.apiURl}/${idPlan}`);
   }
+
+  buscarPlan(idPlan:number):Observable<Plan>{
+    return this.httpClient.get<Plan>(`${this.apiURl}/${idPlan}`);
+  }
+
+  modificarPlan(plan:Plan) : Observable<Object>{
+    return this.httpClient.put(`${this.apiURl}`,plan);
+  }
 }
