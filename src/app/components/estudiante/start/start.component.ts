@@ -1,7 +1,9 @@
 import { LocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { EstudianteService } from 'src/app/service/estudiante.service';
 import { EvaluacionService } from 'src/app/service/evaluacion.service';
+import { LoginService } from 'src/app/service/login.service';
 import { PreguntaService } from 'src/app/service/pregunta.service';
 import { PruebaTerminadaService } from 'src/app/service/prueba-terminada.service';
 import swal from 'sweetalert2';
@@ -23,20 +25,35 @@ export class StartComponent implements OnInit {
   vocacion: any;
   esEnviado = false;
   timer: any;
+  estudiante: any;
 
   constructor(
     private locationSt: LocationStrategy,
     private route: ActivatedRoute,
     private preguntaService: PreguntaService,
     private pruebaTerminadaService: PruebaTerminadaService,
-    private evaluacionService: EvaluacionService
+    private evaluacionService: EvaluacionService,
+    private loginService: LoginService,
+    private estudianteService: EstudianteService
   ) {}
 
   ngOnInit(): void {
+    this.obtenerEstudiante();
     this.prevenirRetroceso();
     this.evaluacionId = this.route.snapshot.params['evaluacionId'];
     console.log(this.evaluacionId);
     this.cargarPreguntas();
+  }
+
+  obtenerEstudiante() {
+    this.estudianteService
+      .obtenerEstudianteUsername({
+        username: this.loginService.getUsuario().username,
+      })
+      .subscribe((data: any) => {
+        this.estudiante = data;
+        console.log(this.estudiante);
+      });
   }
 
   cargarPreguntas() {
@@ -142,7 +159,7 @@ export class StartComponent implements OnInit {
     let prueba = {
       puntaje_obtenido: this.puntosConseguidos,
       estudiante: {
-        dni: this.dni_estudiante,
+        dni: this.estudiante.dni,
       },
       evaluacion: {
         id_evaluacion: this.evaluacionId,

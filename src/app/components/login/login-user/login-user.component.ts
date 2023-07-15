@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from 'src/app/model/usuario';
 import { LoginService } from 'src/app/service/login.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-user',
@@ -16,7 +17,9 @@ export class LoginUserComponent implements OnInit {
 
   constructor(
     private usuarioService: UsuarioService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
   ngOnInit(): void {}
 
@@ -27,9 +30,27 @@ export class LoginUserComponent implements OnInit {
         .autenticarUsuario(this.usuario_login)
         .subscribe((data: any) => {
           this.usuario = data;
-          this.loginService.loginUser(this.usuario);
-          console.log(this.loginService.getUsuario());
+          console.log(this.usuario);
+          if (this.usuario != null || this.usuario != undefined) {
+            this.loginService.loginUser(this.usuario);
+            console.log(this.loginService.getUsuario());
+            this.redireccionarUsuario();
+          } else {
+            swal(
+              'Error',
+              'Error al ingresar, comprueba nombre de usuario o contraseña',
+              'error'
+            );
+          }
         });
+    }
+  }
+
+  redireccionarUsuario() {
+    if (this.usuario.rol.nameRol == 'ADMINISTRADOR') {
+      this.router.navigate(['/admin']);
+    } else {
+      this.router.navigate(['/estudiante']);
     }
   }
 }
