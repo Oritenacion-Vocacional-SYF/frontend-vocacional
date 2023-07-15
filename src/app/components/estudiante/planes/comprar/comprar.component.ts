@@ -19,6 +19,7 @@ export class ComprarComponent implements OnInit{
   oP: Plan;
   oD: Detalle;
   pago:Pago = new Pago();
+  suscrito: boolean;
   @ViewChild('paypal',{static:true}) paypalElement : ElementRef;
 
   constructor(private detalleServicio:DetalleService, private pagoServicio: PagoService, private route: ActivatedRoute, private router:Router){}
@@ -52,18 +53,20 @@ export class ComprarComponent implements OnInit{
       swal('Suscripción registrada',`Felicidades te suscribiste a nuestro plan ${this.oP.nombre_plan} con éxito.`,`success`);
       this.pago.metodo_pago = "Paypal";
       this.registrarPago(this.pago);
-      this.regresar();
+      this.suscrito = true;
+      this.regresar(this.suscrito, this.oP.id_plan);
     },
     onError: (err: any) =>{
       console.log(err);
       swal('Suscripción rechazada',`Lo sentimos, no se pudo completar la suscripción a nuestro plan ${this.oP.nombre_plan}.`,`warning`);
-      this.regresar();
+      this.suscrito = false;
+      this.regresar(this.suscrito, this.oP.id_plan);
     }
     }).render(this.paypalElement.nativeElement);
   }
 
-  regresar() {
-      this.router.navigate(['/estudiante/planes/listar']);
+  regresar(suscrito:boolean, idPlan:number) {
+      this.router.navigate(['/estudiante/planes/listar'], { queryParams: { suscrito: suscrito, idPlan: idPlan } });
   }
   
   registrarPago(pago:Pago){

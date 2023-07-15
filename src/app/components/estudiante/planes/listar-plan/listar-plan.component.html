@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin-top: 50px;">
     <table class="table table-striped">
         <thead class="table-dark">
             <tr>
@@ -11,21 +11,20 @@
         </thead>
         <tbody>
             <tr *ngFor="let plan of planes">
-                <td style="text-align: center;">{{plan.id_plan}}</td>
-                <td style="text-align: center;">{{plan.nombre_plan}}</td>
-                <td style="text-align: center;">{{plan.descripcion}}</td>
-                <td style="text-align: center;">{{plan.costo === 0 ? 'Gratis' : plan.costo}}</td>
+                <td style="text-align: center;">{{ plan.id_plan }}</td>
+                <td style="text-align: center;">{{ plan.nombre_plan }}</td>
+                <td style="text-align: center;">{{ plan.descripcion }}</td>
+                <td style="text-align: center;">{{ plan.costo === 0 ? 'Gratis' : plan.costo }}</td>
                 <td>
                     <div class="example-button-row">
                         <button class="upd" mat-raised-button color="primary"
-                            (click)="redirComprar(plan)">Comprar</button>
+                            [disabled]="suscrito" (click)="redirComprar(plan)">Suscribirme</button>
+                            
+                        <button class="del" *ngIf="suscrito && plan.id_plan == idPlan" mat-raised-button color="warn"
+                        (click)="cancelarSuscripcion()">Cancelar Suscripción</button>
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
-</div>
-
-<div #paypal>
-
 </div>

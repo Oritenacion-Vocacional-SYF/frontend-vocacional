@@ -1,0 +1,40 @@
+<div class="container" style="margin-top: 20px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="example-button-row agregar">
+                <button class="agregar" mat-raised-button color="primary" (click)="redirAgregar()">
+                    <i class="fas fa-plus"></i> Agregar Plan
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Costo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let plan of planes">
+                <td>{{plan.id_plan}}</td>
+                <td>{{plan.nombre_plan}}</td>
+                <td>{{plan.descripcion}}</td>
+                <td>{{plan.costo}}</td>
+                <td>
+                    <div class="example-button-row">
+                        <button class="del" mat-raised-button color="warn"
+                            (click)="eliminarPlan(plan.id_plan)">Eliminar</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

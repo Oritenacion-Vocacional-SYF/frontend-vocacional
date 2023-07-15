@@ -16,7 +16,8 @@ export class CategoriaService {
     return this.http.get(`${this.baseUrl}`);
   }
 
-  
-
+  public registrarCategoria(categoria: any){
+    return this.http.post(`${this.baseUrl}`, categoria)
+  }
 
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from '../profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -12,6 +12,9 @@ import { EstudiantesAgregarComponent } from './usuarios/estudiantes.agregar/estu
 import { EvaListarComponent } from './evaluaciones/eva.listar/eva.listar.component';
 import { EvaListarPreguntasComponent } from './evaluaciones/eva.listar.preguntas/eva.listar.preguntas.component';
 import { EvaAgregarComponent } from './evaluaciones/eva.agregar/eva.agregar.component';
+import { PlanesAgregarComponent } from './planes/planes.agregar/planes.agregar.component';
+import { PlanesListarComponent } from './planes/planes.listar/planes.listar.component';
+import { CategoriaAgregarComponent } from './categoria/categoria.agregar/categoria.agregar.component';
 
 const routes: Routes = [
   {
@@ -42,6 +45,10 @@ const routes: Routes = [
         component: CategoriaListarComponent
       },
       {
+        path: 'agregar-categoria',
+        component: CategoriaAgregarComponent
+      },
+      {
         path: 'usuarios',
         component: UsuariosListarComponent
       },
@@ -60,7 +67,16 @@ const routes: Routes = [
       {
         path: 'preguntas/:id_evaluacion/:titulo',
         component: EvaListarPreguntasComponent
-      }
+      },
+      {
+        path:'planes',
+        component: PlanesListarComponent
+      },
+      {
+        path:'planes/agregar',
+        component: PlanesAgregarComponent
+      },
+
     ]
   }
 ]
