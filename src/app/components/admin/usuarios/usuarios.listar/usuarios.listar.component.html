@@ -14,8 +14,10 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Apellido</th>
                                 <th scope="col">Correo</th>
+                                <th scope="col">Edad</th>
                                 <th scope="col">Fecha de registro</th>
                                 <th scope="col">Usuario</th>
+                                <th scope="col">Acción</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -24,8 +26,10 @@
                                 <td>{{estudiante.nombre}}</td>
                                 <td>{{estudiante.apellido}}</td>
                                 <td>{{estudiante.correo}}</td>
+                                <td>{{estudiante.edad}}</td>
                                 <td>{{estudiante.fecharegistro}}</td>
                                 <td>{{estudiante.usuario.username}}</td>
+                                <td><button type="button" (click)="eliminarUsuario(estudiante.usuario.username)" class="btn btn-danger">Eliminar</button></td>
                             </tr>
                         </tbody>
                     </table>
