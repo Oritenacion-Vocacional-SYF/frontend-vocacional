@@ -29,14 +29,14 @@
     text-align: center;
 }
 
+.container table tbody tr td{
+    text-align: center;
+}
+
 .example-button-row .del{
     margin-right: 10px;
 }
 
 .example-button-row .upd{
     margin-left: 10px;
-}
-
-.container table tbody tr td{
-    text-align: center;
 }

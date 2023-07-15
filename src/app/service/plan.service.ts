@@ -15,4 +15,11 @@ export class PlanService {
     return this.httpClient.get<Plan[]>(`${this.apiURl}`);
   }
 
+  agregarPlanes(plan:Plan):Observable<Object>{
+    return this.httpClient.post(`${this.apiURl}`,plan);
+  }
+
+  eliminarPlan(idPlan:number):Observable<Object>{
+    return this.httpClient.delete(`${this.apiURl}/${idPlan}`);
+  }
 }
