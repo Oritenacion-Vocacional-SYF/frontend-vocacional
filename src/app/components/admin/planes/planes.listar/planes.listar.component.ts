@@ -12,6 +12,8 @@ import swal from 'sweetalert2';
 export class PlanesListarComponent implements OnInit {
   //Para Listar
   planes: Plan[];
+  idPlan: number;
+  objPlan: Plan;
 
   constructor(
     private planServicio: PlanService,
@@ -26,6 +28,22 @@ export class PlanesListarComponent implements OnInit {
     this.planServicio.obtenerPlanes().subscribe((dato) => {
       this.planes = dato;
     });
+  }
+
+  buscarPlan() {
+    this.planServicio.buscarPlan(this.idPlan).subscribe(
+      (dato) => {
+        this.objPlan = dato;
+      },
+      (error) => {
+        console.log('Se produjo un error:', error);
+        swal(
+          'ID incorrecto',
+          `No se encontró el plan con el ID ${this.idPlan}`,
+          'warning'
+        );
+      }
+    );
   }
 
   eliminarPlan(idPlan: number) {
@@ -62,5 +80,8 @@ export class PlanesListarComponent implements OnInit {
     this.router.navigate(['/admin/planes/agregar']);
   }
 
+  modificarProfesion(objPlan: Plan) {
+    this.router.navigate(['/admin/planes/modificar', objPlan]);
+  }
 }
 

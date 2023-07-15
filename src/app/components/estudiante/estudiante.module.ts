@@ -8,7 +8,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { LoadExamenComponent } from './load-examen/load-examen.component';
 import { InstruccionesComponent } from './instrucciones/instrucciones.component';
 import { StartComponent } from './start/start.component';
-
+import { NavbarComponent } from '../shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -18,10 +18,6 @@ import { StartComponent } from './start/start.component';
     InstruccionesComponent,
     StartComponent
   ],
-  imports: [
-    CommonModule,
-    EstudianteRoutingModule,
-    MaterialModule
-  ]
+  imports: [CommonModule, EstudianteRoutingModule, MaterialModule],
 })
-export class EstudianteModule { }
+export class EstudianteModule {}
