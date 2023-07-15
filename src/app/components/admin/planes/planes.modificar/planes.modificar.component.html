@@ -1,0 +1,65 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center"> Modificar Plan </h3>
+    <form class="example-form" (ngSubmit)="onSubmit()" #profesionForm="ngForm">
+
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Nombre del Plan </mat-label>
+                        <input matInput [(ngModel)] = "plan.nombre_plan" type="text" id="nombre"  name="nombre" required minlength="10" maxlength="50" #nombre = "ngModel">
+                            <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                                <div *ngIf="nombre.errors?.['required']">   
+                                    Por favor digite el nombre del Plan  
+                                </div>
+                                <div *ngIf="nombre.errors?.['minlength']">   
+                                    El nombre debe tener por lo minimo una longitud de 10 caracteres        
+                                </div>
+                                <div *ngIf="nombre.errors?.['maxlength']">   
+                                    El nombre debe tener como máximo una longitud de 50 caracteres
+                                </div>
+                            </div>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+
+        <p>
+            <mat-form-field class="example-full-width">
+              <mat-label>Descripción</mat-label>
+              <textarea matInput [(ngModel)] = "plan.descripcion"  id="descripcion"  name="descripcion" required maxlength="1000" #descripcion = "ngModel"></textarea>
+              <div class="alert alert-danger" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+                  <div *ngIf="descripcion.errors?.['required']">   
+                      Por favor digite la descripción del Plan 
+                  </div>
+                  <div *ngIf="descripcion.errors?.['maxlength']">   
+                      La descripcion debe tener como máximo una longitud de 1000 caracteres
+                  </div>
+              </div>
+            </mat-form-field>
+          </p>
+          
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Costo</mat-label>
+                        <input matInput [(ngModel)] = "plan.costo"id="costo" name="costos" required pattern="[0-9]+" #requi = "ngModel">
+                        <div class="alert alert-danger" *ngIf="requi.invalid && (requi.dirty || requi.touched)">
+                            <div *ngIf="requi.errors?.['required']">   
+                                Por favor digite el costo del Plan
+                            </div>
+                            <div *ngIf="requi.errors?.['pattern']">   
+                                Solo se permiten números positivos en el campo.
+                            </div>
+                        </div>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+
+        <div class="example-button-row">
+            <button class="btn btn-success" [disabled]="!profesionForm.form.valid">Modificar</button>
+        </div>
+    </form>
+</div>

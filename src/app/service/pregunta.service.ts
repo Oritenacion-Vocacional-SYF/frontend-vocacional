@@ -36,4 +36,9 @@ export class PreguntaService {
   public evaluarPreguntas(preguntas: any) {
     return this.http.post(`${this.baseUrl}/evaluar`, preguntas);
   }
+
+  public evaluarCuestionario(preguntas: any){
+    return this.http.post(`${this.baseUrl}/evaluar/prueba`, preguntas);
+  }
+
 }
