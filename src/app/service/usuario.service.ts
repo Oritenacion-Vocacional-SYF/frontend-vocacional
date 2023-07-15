@@ -14,8 +14,12 @@ export class UsuarioService {
   obtenerUsuarioId(id: String): Observable<Object> {
     return this.HttpClient.get<Usuario>(`${this.baseURL}/${id}`);
   }
- 
+
   agregarUsuarioEstudiante(usuario: Usuario) {
     return this.HttpClient.post(`${this.baseURL}`, usuario);
+  }
+
+  autenticarUsuario(usuario: Usuario) {
+    return this.HttpClient.post(`${this.baseURL}/auth`, usuario);
   }
 }
