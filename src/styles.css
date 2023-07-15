@@ -48,5 +48,29 @@ body {
 .ml70{
   margin-left: 70px !important;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+  --dark: #16191c;
+  --dark-x: #1e2126;
+  --light: #fff;
+}
+
+.bg-dark {
+  background-color: var(--dark) !important;
+}
+
+.bg-dark-x {
+  background-color: var(--dark-x) !important;
+}
+
+section {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 300;
+  color: var(--light);
+}
+
+
+.form-control, .btn{
+  min-height: 3.125rem;
+  line-height: initial;
+}
