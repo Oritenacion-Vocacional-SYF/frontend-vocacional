@@ -17,6 +17,7 @@ import { EvaListarComponent } from './evaluaciones/eva.listar/eva.listar.compone
 import { EvaListarPreguntasComponent } from './evaluaciones/eva.listar.preguntas/eva.listar.preguntas.component';
 import { PlanesListarComponent } from './planes/planes.listar/planes.listar.component';
 import { PlanesAgregarComponent } from './planes/planes.agregar/planes.agregar.component';
+import { PlanesModificarComponent } from './planes/planes.modificar/planes.modificar.component';
 import { NavbarComponent } from '../shared/navbar/navbar.component';
 
 @NgModule({
@@ -34,7 +35,8 @@ import { NavbarComponent } from '../shared/navbar/navbar.component';
     EvaListarComponent,
     EvaListarPreguntasComponent,
     PlanesListarComponent,
-    PlanesAgregarComponent
+    PlanesAgregarComponent,
+    PlanesModificarComponent
   ],
   imports: [
     CommonModule,
