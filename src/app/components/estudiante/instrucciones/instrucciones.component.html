@@ -1,0 +1,45 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card class="mt20">
+                    <mat-card-header>
+                        <mat-card-title>
+                            Instrucciones de la evaluación.
+                        </mat-card-title>
+                        <mat-card-subtitle>Lea detenidamente, por favor.</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content class="ml30">
+                        <h1>{{evaluacion.titulo}}</h1>
+                        <p>{{evaluacion.descripcion}}</p>
+                        <mat-divider></mat-divider>
+                        <br>
+                        <h1>Instrucciones importantes</h1>
+                        <ul>
+                            <li>Esta prueba es solo para fines prácticos.</li>
+                            <li>Puede intentar la prueba cualquier cantidad de veces.</li>
+                            <li>Tiene que enviar la prueba en <b>{{evaluacion.nro_preguntas*2}} min</b>.</li>
+                            <li>N° Preguntas: <b>{{evaluacion.nro_preguntas}}</b>.</li>
+                            <li>Puntaje máximo: <b>{{evaluacion.puntaje_maximo}}</b>.</li>
+                        </ul>
+                        <mat-divider></mat-divider>
+                        <br>
+                        <h1>Evaluación</h1>
+                        <ul>
+                            <li>El tiempo comenzará en el momento en que haga click en el botón de inicio.</li>
+                            <li>No puede reanudar esta prueba si se interrumpe por algún motivo.</li>
+                            <li>Desplácese hacia abajo para pasar a la siguiente pregunta.</li>
+                            <li>Haga click en el botón enviar prueba al finalizar.</li>
+                            <li>El informe de la prueba se generará automáticamente en formato PDF.</li>
+                        </ul>
+                    </mat-card-content>
+                    <mat-card-actions class="text-center mb20">
+                        <button (click)="empezarEvaluacion()" mat-raised-button color="primary">
+                            Iniciar prueba
+                        </button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

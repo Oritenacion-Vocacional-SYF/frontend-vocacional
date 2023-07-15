@@ -1,0 +1,221 @@
+<div class="container mt10">
+    <mat-card>
+        <div class="row p-4 text-center">
+            <h1 class="text-center mt10 fw-bold">
+                Añadir Estudiante
+            </h1>
+        </div>
+        <form class="example-form" (ngSubmit)="onSubmit()" #profesionForm="ngForm">
+            <div class="row p-4">
+                <div class="col-md-6">
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Nombre de usuario </mat-label>
+                                    <input matInput [(ngModel)]="estudiante.username" type="text" id="username"
+                                        name="username" required minlength="4" maxlength="16" #username="ngModel">
+                                    <div class="alert alert-danger"
+                                        *ngIf="username.invalid && (username.dirty || username.touched)">
+                                        <div *ngIf="username?.errors?.['required']">
+                                            Por favor digite el nombre de usuario
+                                        </div>
+                                        <div *ngIf="username?.errors?.['minlength']">
+                                            El nombre debe tener por lo minimo una longitud de 4 caracteres
+                                        </div>
+                                        <div *ngIf="username?.errors?.['maxlength']">
+                                            El nombre debe tener como máximo una longitud de 50 caracteres
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Contraseña</mat-label>
+                                    <input matInput [(ngModel)]="estudiante.password"
+                                        [type]="hide ? 'password' : 'text'" id="password" name="password" required
+                                        minlength="8" maxlength="16" #password="ngModel">
+                                    <button mat-icon-button matSuffix (click)="hide = !hide"
+                                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                                    <div class="alert alert-danger"
+                                        *ngIf="password.invalid && (password.dirty || password.touched)">
+                                        <div *ngIf="password?.errors?.['required']">
+                                            Por favor digite la contraseña
+                                        </div>
+                                        <div *ngIf="password?.errors?.['minlength']">
+                                            La contraseña debe tener por lo minimo una longitud de 8 caracteres
+                                        </div>
+                                        <div *ngIf="password?.errors?.['maxlength']">
+                                            La contraseña debe tener como máximo una longitud de 16 caracteres
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row p-4">
+                <div class="col-md-6">
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Nombre</mat-label>
+                                    <input matInput [(ngModel)]="estudiante.nombre" type="text" id="nombre"
+                                        name="nombre" required minlength="3" maxlength="50" #nombre="ngModel">
+                                    <div class="alert alert-danger"
+                                        *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                                        <div *ngIf="nombre?.errors?.['required']">
+                                            Por favor digite el nombre del estudiante
+                                        </div>
+                                        <div *ngIf="nombre?.errors?.['minlength']">
+                                            El nombre debe tener por lo minimo una longitud de 3 caracteres
+                                        </div>
+                                        <div *ngIf="nombre?.errors?.['maxlength']">
+                                            El nombre debe tener como máximo una longitud de 50 caracteres
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Apellido</mat-label>
+                                    <input matInput [(ngModel)]="estudiante.apellido" type="text" id="apellido"
+                                        name="apellido" required minlength="2" maxlength="50" #apellido="ngModel">
+                                    <div class="alert alert-danger"
+                                        *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                                        <div *ngIf="apellido?.errors?.['required']">
+                                            Por favor digite el apellido del estudiante
+                                        </div>
+                                        <div *ngIf="apellido?.errors?.['minlength']">
+                                            El nombre debe tener por lo minimo una longitud de 2 caracteres
+                                        </div>
+                                        <div *ngIf="apellido?.errors?.['maxlength']">
+                                            El nombre debe tener como máximo una longitud de 50 caracteres
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row p-4">
+                <div class="col-md-6">
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Correo</mat-label>
+                                    <input matInput [(ngModel)]="estudiante.correo" type="text" id="correo"
+                                        name="correo" required minlength="5" maxlength="50" #correo="ngModel">
+                                    <div class="alert alert-danger"
+                                        *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+                                        <div *ngIf="correo?.errors?.['required']">
+                                            Por favor digite el correo del estudiante
+                                        </div>
+                                        <div *ngIf="correo?.errors?.['minlength']">
+                                            El correo debe tener por lo minimo una longitud de 10 caracteres
+                                        </div>
+                                        <div *ngIf="correo?.errors?.['maxlength']">
+                                            El correo debe tener como máximo una longitud de 50 caracteres
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Dni</mat-label>
+                                    <input matInput [(ngModel)]="estudiante.dni" type="text" id="dni" name="dni"
+                                        required minlength="8" maxlength="8" #dni="ngModel">
+                                    <div class="alert alert-danger" *ngIf="dni.invalid && (dni.dirty || dni.touched)">
+                                        <div *ngIf="dni?.errors?.['required']">
+                                            Por favor digite el dni del estudiante
+                                        </div>
+                                        <div *ngIf="dni?.errors?.['minlength']">
+                                            El dni debe tener por lo minimo una longitud de 8 caracteres
+                                        </div>
+                                        <div *ngIf="dni?.errors?.['maxlength']">
+                                            El dni debe tener como máximo una longitud de 8 caracteres
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row p-4">
+                <div class="col-md-6">
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Edad</mat-label>
+                                    <input matInput [(ngModel)]="estudiante.edad" type="number" id="edad" name="edad"
+                                        required minlength="1" maxlength="3" #edad="ngModel">
+                                    <div class="alert alert-danger"
+                                        *ngIf="edad.invalid && (edad.dirty || edad.touched)">
+                                        <div *ngIf="edad?.errors?.['required']">
+                                            Por favor digite el correo del estudiante
+                                        </div>
+                                        <div *ngIf="edad?.errors?.['minlength']">
+                                            El correo debe tener por lo minimo una longitud de 10 caracteres
+                                        </div>
+                                        <div *ngIf="edad?.errors?.['maxlength']">
+                                            El correo debe tener como máximo una longitud de 50 caracteres
+                                        </div>
+                                    </div>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table class="example-full-width" cellspacing="0">
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Img</mat-label>
+                                    <input matInput [(ngModel)]="estudiante.img" type="text" id="img" name="img"
+                                        minlength="5" maxlength="80" #img="ngModel">
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="example-button-row my-3">
+                <button class="btn btn-success" [disabled]="!profesionForm.form.valid">Registrar</button>
+            </div>
+
+            
+
+
+        </form>
+
+
+    </mat-card>
+</div>

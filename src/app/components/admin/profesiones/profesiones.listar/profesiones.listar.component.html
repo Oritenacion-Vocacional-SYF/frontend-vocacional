@@ -1,0 +1,93 @@
+<div class="container" style="margin-top: 20px;">
+    <div class="row">
+        <div class="col-md-7">
+            <input class="form-control" type="text" id="idProfesion" [(ngModel)]="idProfesion"
+                placeholder="Buscar ID de Profesión">
+        </div>
+        <div class="col-md-2">
+            <div class="example-button-row buscar">
+                <button (click)="buscarProfesion()" class="btn btn-dark">Buscar</button>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="example-button-row agregar">
+                <button class="agregar" mat-raised-button color="primary" (click)="redirAgregar()">
+                    <i class="fas fa-plus"></i> Agregar Profesión
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf="profesionEncontrada">
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Perspectiva</th>
+                <th>Requisitos</th>
+                <th>Salario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{objProf.id_profesion}}</td>
+                <td>{{objProf.nombre}}</td>
+                <td>{{objProf.descripcion}}</td>
+                <td>{{objProf.perspectiva_laboral}}</td>
+                <td>{{objProf.requisitos_admin}}</td>
+                <td>{{objProf.salarios}}</td>
+                <td>
+                    <div class="example-button-row">
+                        <button class="del" mat-raised-button color="warn"
+                            (click)="eliminarProfesion(objProf.id_profesion)">Eliminar</button>
+                        <button class="upd" mat-raised-button color="primary"
+                            (click)="modificarProfesion(objProf)">Modificar</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="example-button-row regresar">
+        <button (click)="mostrarTabla()" class="btn btn-dark"><i class="fas fa-arrow-left"></i> Regresar</button>
+    </div>
+</div>
+
+<div class="container" *ngIf="!profesionEncontrada">
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Perspectiva</th>
+                <th>Requisitos</th>
+                <th>Salario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let profesion of profesiones">
+                <td>{{profesion.id_profesion}}</td>
+                <td>{{profesion.nombre}}</td>
+                <td>{{profesion.descripcion}}</td>
+                <td>{{profesion.perspectiva_laboral}}</td>
+                <td>{{profesion.requisitos_admin}}</td>
+                <td>{{profesion.salarios}}</td>
+                <td>
+                    <div class="example-button-row">
+                        <button class="del" mat-raised-button color="warn"
+                            (click)="eliminarProfesion(profesion.id_profesion)">Eliminar</button>
+                        <button class="upd" mat-raised-button color="primary"
+                            (click)="modificarProfesion(profesion)">Modificar</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

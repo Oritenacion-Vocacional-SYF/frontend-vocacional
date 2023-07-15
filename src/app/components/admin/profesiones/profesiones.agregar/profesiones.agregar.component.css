@@ -1,0 +1,19 @@
+.example-full-width{
+    width: 100%;
+}
+
+.example-button-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col-md-6.offset-md-3 {
+    margin-top: 1%;
+    margin-bottom: 10%;
+    padding: 20px;
+    background-color: #3f51b5;
+    border-radius: 20px;
+    color: white;
+    min-width: 500px;
+}

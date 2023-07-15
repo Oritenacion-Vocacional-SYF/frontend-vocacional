@@ -1,0 +1,31 @@
+<div class="container">
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre del Plan</th>
+                <th>Descripcion</th>
+                <th>Costo</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let plan of planes">
+                <td style="text-align: center;">{{plan.id_plan}}</td>
+                <td style="text-align: center;">{{plan.nombre_plan}}</td>
+                <td style="text-align: center;">{{plan.descripcion}}</td>
+                <td style="text-align: center;">{{plan.costo === 0 ? 'Gratis' : plan.costo}}</td>
+                <td>
+                    <div class="example-button-row">
+                        <button class="upd" mat-raised-button color="primary"
+                            (click)="redirComprar(plan)">Comprar</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div #paypal>
+
+</div>

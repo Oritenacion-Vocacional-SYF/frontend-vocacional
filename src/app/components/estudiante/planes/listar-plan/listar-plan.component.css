@@ -1,0 +1,32 @@
+.example-button-row.agregar {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.example-button-row.buscar {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.example-button-row.regresar{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.example-button-row{
+    display: flex;
+    justify-content: center;
+    padding: 0px;
+}
+
+.container table thead tr th{
+    text-align: center;
+}
+
+

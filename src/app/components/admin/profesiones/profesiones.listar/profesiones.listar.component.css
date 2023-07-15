@@ -1,0 +1,38 @@
+.example-button-row.agregar {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.example-button-row.buscar {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.example-button-row.regresar{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.example-button-row{
+    display: flex;
+    justify-content: center;
+}
+
+.container table thead tr th{
+    text-align: center;
+}
+
+.example-button-row .del{
+    margin-right: 10px;
+}
+
+.example-button-row .upd{
+    margin-left: 10px;
+}

@@ -1,0 +1,31 @@
+<p>eva.listar works!</p>
+<mat-card class="mt10" *ngFor="let evaluacion of evaluaciones">
+    <div class="container">
+
+        <mat-card-header>
+            <mat-card-title>
+                {{evaluacion.titulo}}
+            </mat-card-title>
+            <mat-card-subtitle>
+                {{evaluacion.categoria.titulo}}
+            </mat-card-subtitle>
+
+        </mat-card-header>
+
+        <mat-card-content>
+            <mat-card-actions>
+                <button mat-flat-button color="primary"
+                    [routerLink]="'/admin/ver-preguntas/'+evaluacion.id_evaluacion+'/'+evaluacion.titulo">Ver
+                    Preguntas</button>
+                <button mat-stroked-button color="primary" class="ml20">Puntaje máximo {{evaluacion.puntaje_maximo}}
+                </button>
+                <button mat-stroked-button color="primary" class="ml20">Número de Preguntas {{evaluacion.nro_preguntas}}
+                </button>
+                <button mat-flat-button color="primary" class="ml20">Actualizar</button>
+                <button mat-flat-button color="primary" class="ml20">Intentos</button>
+            </mat-card-actions>
+        </mat-card-content>
+    </div>
+
+
+</mat-card>

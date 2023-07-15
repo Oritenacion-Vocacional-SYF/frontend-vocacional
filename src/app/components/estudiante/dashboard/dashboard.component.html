@@ -1,0 +1,41 @@
+<div class="boostrap-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <mat-card>
+                    <mat-action-list>
+                        <div mat-subheader>Menú</div>
+                        <button routerLink="/estudiante" mat-list-item>
+                            <mat-icon mat-list-icon>home</mat-icon> Inicio
+                        </button>                        
+                        <button mat-list-item routerLink="/estudiante/profile">
+                            <mat-icon mat-list-icon>account_circle</mat-icon> Mi perfil
+                        </button>
+                        <button mat-list-item routerLink="/estudiante/planes/listar">
+                            <mat-icon mat-list-icon>credit_card</mat-icon> Suscripciones
+                        </button>
+                        <!--
+                        <button mat-list-item routerLink="/estudiante">
+                            <mat-icon mat-list-icon>school</mat-icon> Detalles Profesiones
+                        </button>
+                        -->
+                        <button mat-list-item routerLink="/estudiante/0">
+                            <mat-icon mat-list-icon>quiz</mat-icon> Evaluaciones
+                        </button>
+                        <button [routerLink]="'/estudiante/'+c.id_categoria" mat-list-item *ngFor="let c of categorias">
+                            <mat-icon mat-list-icon>account_circle</mat-icon> {{c.titulo}}
+                        </button>
+                        <!--
+                        <button mat-list-item routerLink="/estudiante">
+                            <mat-icon mat-list-icon>logout</mat-icon> Cerrar Sesión
+                        </button>
+                        -->
+                    </mat-action-list>
+                </mat-card>
+            </div>
+            <div class="col-md-9">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
