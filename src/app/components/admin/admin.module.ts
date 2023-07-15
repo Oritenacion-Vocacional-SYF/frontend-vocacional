@@ -44,8 +44,7 @@ import { NavbarComponent } from '../shared/navbar/navbar.component';
 
     EvaModificarComponent,
     EvaAgregarPreguntaComponent,
-    EvaModificarPreguntaComponent
-
+    EvaModificarPreguntaComponent,
     PlanesModificarComponent
 
   ],
