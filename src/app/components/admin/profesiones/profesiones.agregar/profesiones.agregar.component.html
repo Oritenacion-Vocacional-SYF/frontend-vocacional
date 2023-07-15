@@ -9,13 +9,13 @@
                         <mat-label>Nombre de la Profesión </mat-label>
                         <input matInput [(ngModel)] = "profesion.nombre" type="text" id="nombre"  name="nombre" required minlength="10" maxlength="50" #nombre = "ngModel">
                             <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
-                                <div *ngIf="nombre.errors['required']">   
+                                <div *ngIf="nombre.errors?.['required']">   
                                     Por favor digite el nombre de la Profesion    
                                 </div>
-                                <div *ngIf="nombre.errors['minlength']">   
+                                <div *ngIf="nombre.errors?.['minlength']">   
                                     El nombre debe tener por lo minimo una longitud de 10 caracteres        
                                 </div>
-                                <div *ngIf="nombre.errors['maxlength']">   
+                                <div *ngIf="nombre.errors?.['maxlength']">   
                                     El nombre debe tener como máximo una longitud de 50 caracteres
                                 </div>
                             </div>
@@ -26,10 +26,10 @@
                         <mat-label>Salarios</mat-label>
                         <input matInput [(ngModel)] = "profesion.salarios" type="text" id="salarios" name="salarios" required  maxlength="200" #salario = "ngModel">
                             <div class="alert alert-danger" *ngIf="salario.invalid && (salario.dirty || salario.touched)">
-                                <div *ngIf="salario.errors['required']">   
+                                <div *ngIf="salario.errors?.['required']">   
                                     Por favor digite el salario de la Profesion    
                                 </div>
-                                <div *ngIf="salario.errors['maxlength']">   
+                                <div *ngIf="salario.errors?.['maxlength']">   
                                     El salario debe tener como máximo una longitud de 200 caracteres
                                 </div>
                             </div>
@@ -43,10 +43,10 @@
             <mat-label>Descripción</mat-label>
             <textarea matInput [(ngModel)] = "profesion.descripcion"  id="descripcion"  name="descripcion" required maxlength="1000" #descripcion = "ngModel"></textarea>
             <div class="alert alert-danger" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
-                <div *ngIf="descripcion.errors['required']">   
+                <div *ngIf="descripcion.errors?.['required']">   
                     Por favor digite la descripción de la Profesion    
                 </div>
-                <div *ngIf="descripcion.errors['maxlength']">   
+                <div *ngIf="descripcion.errors?.['maxlength']">   
                     La descripcion debe tener como máximo una longitud de 1000 caracteres
                 </div>
             </div>
@@ -60,10 +60,10 @@
                         <mat-label>Requisitos de Admisión</mat-label>
                         <textarea matInput [(ngModel)] = "profesion.requisitos_admin"id="requisitos" name="requisitos" required maxlength="100" #requi = "ngModel"></textarea>
                         <div class="alert alert-danger" *ngIf="requi.invalid && (requi.dirty || requi.touched)">
-                            <div *ngIf="requi.errors['required']">   
+                            <div *ngIf="requi.errors?.['required']">   
                                 Por favor digite los Requisitos de Admisión de la Profesion    
                             </div>
-                            <div *ngIf="descripcion.errors['maxlength']">   
+                            <div *ngIf="descripcion.errors?.['maxlength']">   
                                 Los requisitos debe tener como máximo una longitud de 100 caracteres
                             </div>
                         </div>
@@ -74,10 +74,10 @@
                         <mat-label>Perspectiva Laboral</mat-label>
                         <textarea matInput [(ngModel)] = "profesion.perspectiva_laboral" id="perspectiva" name="perspectiva" required maxlength="1000" #pl = "ngModel"></textarea>
                         <div class="alert alert-danger" *ngIf="pl.invalid && (pl.dirty || pl.touched)">
-                            <div *ngIf="pl.errors['required']">   
+                            <div *ngIf="pl.errors?.['required']">   
                                 Por favor digite la Perspectiva Laboral de la Profesion    
                             </div>
-                            <div *ngIf="pl.errors['maxlength']">   
+                            <div *ngIf="pl.errors?.['maxlength']">   
                                 La Perspectiva Laboral debe tener como máximo una longitud de 1000 caracteres
                             </div>
                         </div>
