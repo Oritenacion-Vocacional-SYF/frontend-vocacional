@@ -14,6 +14,7 @@ import { EvaListarPreguntasComponent } from './evaluaciones/eva.listar.preguntas
 import { EvaAgregarComponent } from './evaluaciones/eva.agregar/eva.agregar.component';
 import { PlanesAgregarComponent } from './planes/planes.agregar/planes.agregar.component';
 import { PlanesListarComponent } from './planes/planes.listar/planes.listar.component';
+import { CategoriaAgregarComponent } from './categoria/categoria.agregar/categoria.agregar.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
       {
         path: 'categorias',
         component: CategoriaListarComponent
+      },
+      {
+        path: 'agregar-categoria',
+        component: CategoriaAgregarComponent
       },
       {
         path: 'usuarios',
