@@ -15,6 +15,9 @@ import { EvaAgregarComponent } from './evaluaciones/eva.agregar/eva.agregar.comp
 import { PlanesAgregarComponent } from './planes/planes.agregar/planes.agregar.component';
 import { PlanesListarComponent } from './planes/planes.listar/planes.listar.component';
 import { CategoriaAgregarComponent } from './categoria/categoria.agregar/categoria.agregar.component';
+import { EvaModificarComponent } from './evaluaciones/eva.modificar/eva.modificar.component';
+import { EvaAgregarPreguntaComponent } from './evaluaciones/eva.agregar.pregunta/eva.agregar.pregunta.component';
+import { EvaModificarPreguntaComponent } from './evaluaciones/eva.modificar.pregunta/eva.modificar.pregunta.component';
 
 const routes: Routes = [
   {
@@ -61,12 +64,24 @@ const routes: Routes = [
         component: EvaListarComponent
       },
       {
-        path: 'evaluaciones/agregar',
+        path: 'agregar-evaluacion',
         component: EvaAgregarComponent
       },
       {
-        path: 'preguntas/:id_evaluacion/:titulo',
+        path: 'evaluaciones/:evaluacionId',
+        component: EvaModificarComponent
+      },
+      {
+        path: 'preguntas/:evaluacionId/:titulo',
         component: EvaListarPreguntasComponent
+      },
+      {
+        path: 'agregar-pregunta/:evaluacionId/:titulo',
+        component: EvaAgregarPreguntaComponent
+      },
+      {
+        path: 'modificar-pregunta/:preguntaId',
+        component: EvaModificarPreguntaComponent
       },
       {
         path:'planes',

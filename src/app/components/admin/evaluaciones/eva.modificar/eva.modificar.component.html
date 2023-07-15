@@ -1,15 +1,15 @@
 <mat-card>
-    <h1>Agregar nueva evaluación</h1>
+    <h1>Actualizar evaluación</h1>
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <form (ngSubmit)="registrarEvaluacion()">
+            <form *ngIf="evaluacion" (submit)="modificarDatos() ">
                 <mat-form-field class="w100" appearance="fill">
                     <mat-label>Título</mat-label>
-                    <input [(ngModel)]= "evaluacionData.titulo" type="text" name="titulo" required placeholder="Digite el título" matInput>
+                    <input [(ngModel)]= "evaluacion.titulo" type="text" name="titulo" required placeholder="Digite el título" matInput>
                 </mat-form-field>
                 <mat-form-field class="w100" appearance="fill">
                     <mat-label>Descripción</mat-label>
-                    <textarea [(ngModel)]= "evaluacionData.descripcion" type="text" name="descripcion" placeholder="Digite la descripción" matInput rows="8">
+                    <textarea [(ngModel)]= "evaluacion.descripcion" type="text" name="descripcion" placeholder="Digite la descripción" matInput rows="8">
                     </textarea>
                 </mat-form-field>
 
@@ -17,22 +17,22 @@
                     <div class="col-md-6">
                         <mat-form-field class="w100" appearance="fill">
                             <mat-label>Puntos máximos</mat-label>
-                            <input [(ngModel)]= "evaluacionData.puntaje_maximo" type="text" name="puntaje_maximo" placeholder="Digite la cantidad de puntos" matInput>
+                            <input [(ngModel)]= "evaluacion.puntaje_maximo" type="text" name="puntaje_maximo" placeholder="Digite la cantidad de puntos" matInput>
                         </mat-form-field>
                     </div>
                     <div class="col-md-6">
                         <mat-form-field class="w100" appearance="fill">
                             <mat-label>N° Preguntas</mat-label>
-                            <input [(ngModel)]= "evaluacionData.nro_preguntas" type="text" name="nro_preguntas" placeholder="Digite el número de preguntas" matInput>
+                            <input [(ngModel)]= "evaluacion.nro_preguntas" type="text" name="nro_preguntas" placeholder="Digite el número de preguntas" matInput>
                         </mat-form-field>
                     </div>
                 </div>
 
-                <mat-slide-toggle class="mt20" [(ngModel)]= "evaluacionData.activo" name="activo" color="primary">Estado de publicación</mat-slide-toggle>
+                <mat-slide-toggle class="mt20" [(ngModel)]= "evaluacion.activo" name="activo" color="primary">Estado de publicación</mat-slide-toggle>
 
                 <mat-form-field appearance="fill" class="mt20 w100">
                     <mat-label>Categorías</mat-label>
-                    <mat-select name="categoria" [(ngModel)]= "evaluacionData.categoria.id_categoria">
+                    <mat-select name="categoria" [(ngModel)]= "evaluacion.categoria.id_categoria">
                         <mat-option *ngFor="let c of categorias" [value]="c.id_categoria">
                             {{ c.titulo }}
                         </mat-option>
@@ -40,7 +40,7 @@
                 </mat-form-field>
 
                 <div class="container text-center">
-                    <button mat-raised-button color="primary">Agregar</button>
+                    <button mat-raised-button color="primary">Modificar</button>
                 </div>
             </form>
         </div>

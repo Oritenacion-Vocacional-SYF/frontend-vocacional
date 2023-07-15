@@ -1,8 +1,8 @@
-<p>eva.listar works!</p>
 <mat-card class="mt10" *ngFor="let evaluacion of evaluaciones">
     <div class="container">
 
         <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>
                 {{evaluacion.titulo}}
             </mat-card-title>
@@ -15,17 +15,21 @@
         <mat-card-content>
             <mat-card-actions>
                 <button mat-flat-button color="primary"
-                    [routerLink]="'/admin/ver-preguntas/'+evaluacion.id_evaluacion+'/'+evaluacion.titulo">Ver
+                    [routerLink]="'/admin/preguntas/'+evaluacion.id_evaluacion+'/'+evaluacion.titulo">Ver
                     Preguntas</button>
                 <button mat-stroked-button color="primary" class="ml20">Puntaje máximo {{evaluacion.puntaje_maximo}}
                 </button>
                 <button mat-stroked-button color="primary" class="ml20">Número de Preguntas {{evaluacion.nro_preguntas}}
                 </button>
-                <button mat-flat-button color="primary" class="ml20">Actualizar</button>
+                <button [routerLink]="'/admin/evaluaciones/'+evaluacion.id_evaluacion" mat-flat-button color="primary" class="ml20">Modificar</button>
                 <button mat-flat-button color="primary" class="ml20">Intentos</button>
+                <button mat-flat-button color="warn" class="ml10" (click)="eliminarEvaluacion(evaluacion.id_evaluacion)">Eliminar</button>
             </mat-card-actions>
         </mat-card-content>
     </div>
 
-
 </mat-card>
+
+<div class="container text-center mt20">
+    <button routerLink="/admin/agregar-evaluacion" mat-raised-button color="primary">Agregar cuestionario</button>
+</div>
